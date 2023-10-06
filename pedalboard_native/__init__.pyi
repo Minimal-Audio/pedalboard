@@ -1398,6 +1398,10 @@ class VST3Plugin(ExternalPlugin):
         """
         Load a VST3 preset file in .vstpreset format.
         """
+    def load_ma_current_preset(self, preset_file_path: str, preset_display_name: str = "", preset_uuid: str = "", preset_pack_name: str = "") -> None:
+        """
+        Load a preset in Current (Minimal Audio).
+        """
     @typing.overload
     def process(
         self,
