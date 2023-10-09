@@ -3,6 +3,7 @@
 For audio I/O classes (i.e.: reading and writing audio files), see ``pedalboard.io``."""
 from __future__ import annotations
 import pedalboard_native
+import pedalboard
 
 import typing
 
@@ -297,7 +298,7 @@ class Convolution(Plugin):
         pass
     pass
 
-class Current(ExternalPlugin(VST3Plugin)):
+class Current(Plugin):
     def __init__(self, path_to_plugin: str = "") -> None:
         """
         A synthesizer from Minimal Audio. You need to have it installed to make it work.
