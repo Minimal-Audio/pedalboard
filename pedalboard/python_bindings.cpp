@@ -46,6 +46,7 @@ namespace py = pybind11;
 #include "plugins/Clipping.h"
 #include "plugins/Compressor.h"
 #include "plugins/Convolution.h"
+#include "plugins/Current.h"
 #include "plugins/Delay.h"
 #include "plugins/Distortion.h"
 #include "plugins/GSMFullRateCompressor.h"
@@ -216,6 +217,7 @@ or buffer, set ``reset`` to ``False``.
   init_reverb(m);
 
   init_external_plugins(m);
+  init_current(m);
 
   // Classes that don't perform any audio effects, but that add other utilities:
   py::module utils = m.def_submodule("utils");
