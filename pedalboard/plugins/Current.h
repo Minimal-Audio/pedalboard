@@ -119,7 +119,7 @@ inline void init_current(py::module &m) {
              if (inPluginPath.empty()) {
 #if JUCE_WINDOWS
                inPluginPath =
-                   "C:\\Program Files\\Common Files\\VST3\\Current.vst3";
+                   "C:\\Program Files\\Common Files\\VST3\\Current.vst3\\Contents\\x86_64-win\\Current.vst3";
 #elif JUCE_MAC
                inPluginPath = "/Library/Audio/Plug-Ins/VST3/Current.vst3";
 #else
