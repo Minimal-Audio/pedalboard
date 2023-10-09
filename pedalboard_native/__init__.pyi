@@ -3,7 +3,6 @@
 For audio I/O classes (i.e.: reading and writing audio files), see ``pedalboard.io``."""
 from __future__ import annotations
 import pedalboard_native
-import pedalboard
 
 import typing
 
