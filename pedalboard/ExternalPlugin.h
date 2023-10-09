@@ -777,6 +777,7 @@ public:
     // conclude the plugin doesn't allow this channel count.
     if ((!mainInputBus || mainInputBus->getNumberOfChannels() != numChannels) ||
         mainOutputBus->getNumberOfChannels() != numChannels) {
+
       // Reset the bus configuration to what it was before, so we don't
       // leave one of the buses smaller than the other:
       if (mainInputBus)
