@@ -758,10 +758,7 @@ public:
         bus->enable(false);
     }
 
-    // Return if number of channels already correct. Allow for 0 input channels
-    // (instrument)
-    if ((!mainInputBus || mainInputBus->getNumberOfChannels() == 0 ||
-         mainInputBus->getNumberOfChannels() == numChannels) &&
+    if ((!mainInputBus || mainInputBus->getNumberOfChannels() == numChannels) &&
         mainOutputBus->getNumberOfChannels() == numChannels) {
       return;
     }
@@ -772,7 +769,7 @@ public:
     auto previousOutputChannelCount = mainOutputBus->getNumberOfChannels();
 
     // Try to change the input and output bus channel counts...
-    if (mainInputBus && mainInputBus->getNumberOfChannels() != 0)
+    if (mainInputBus)
       mainInputBus->setNumberOfChannels(numChannels);
     mainOutputBus->setNumberOfChannels(numChannels);
 
@@ -1182,7 +1179,7 @@ public:
       spec.numChannels = (juce::uint32)numChannels;
       prepare(spec);
 
-      // Don't crash if plugin is considered an effect. It works anyway
+      // Use acceptsAudioInput function to check if effect or instrument. Can be overriden to avoid this exception.
       if (acceptsAudioInput()) {
         throw std::invalid_argument(
             "Plugin '" + pluginInstance->getName().toStdString() +
