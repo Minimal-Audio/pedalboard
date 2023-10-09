@@ -39,6 +39,7 @@ __all__ = [
     "Clipping",
     "Compressor",
     "Convolution",
+    "Current",
     "Delay",
     "Distortion",
     "ExternalPlugin",
@@ -295,6 +296,17 @@ class Convolution(Plugin):
     def mix(self, arg1: float) -> None:
         pass
     pass
+
+class Current(Plugin):
+    def __init__(self, plugin_path: str = "") -> None:
+        """
+        A synthesizer from Minimal Audio. You need to have it installed to make it work.
+        """
+
+    def load_ma_current_preset(self, preset_file_path: str, preset_display_name: str = "", preset_uuid: str = "", preset_pack_name: str = "") -> None:
+        """
+        Load a preset in Current (Minimal Audio).
+        """
 
 class Delay(Plugin):
     """

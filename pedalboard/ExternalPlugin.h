@@ -1179,7 +1179,9 @@ public:
       spec.numChannels = (juce::uint32)numChannels;
       prepare(spec);
 
-      if (pluginInstance->getMainBusNumInputChannels() > 0) {
+      // Use acceptsAudioInput function to check if effect or instrument. Can be
+      // overriden to avoid this exception.
+      if (acceptsAudioInput()) {
         throw std::invalid_argument(
             "Plugin '" + pluginInstance->getName().toStdString() +
             "' expects audio as input, but was provided MIDI messages.");
@@ -1289,13 +1291,15 @@ public:
     StandalonePluginWindow::openWindowAndWait(*pluginInstance, optionalEvent);
   }
 
+protected:
+  std::unique_ptr<juce::AudioPluginInstance> pluginInstance;
+
 private:
   constexpr static int ExternalLoadSampleRate = 44100,
                        ExternalLoadMaximumBlockSize = 8192;
   juce::String pathToPluginFile;
   juce::PluginDescription foundPluginDescription;
   juce::AudioPluginFormatManager pluginFormatManager;
-  std::unique_ptr<juce::AudioPluginInstance> pluginInstance;
 
   long samplesProvided = 0;
   float initializationTimeout = DEFAULT_INITIALIZATION_TIMEOUT_SECONDS;
