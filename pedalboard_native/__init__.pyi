@@ -298,7 +298,7 @@ class Convolution(Plugin):
     pass
 
 class Current(Plugin):
-    def __init__(self, path_to_plugin: str = "") -> None:
+    def __init__(self, plugin_path: str = "") -> None:
         """
         A synthesizer from Minimal Audio. You need to have it installed to make it work.
         """
