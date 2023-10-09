@@ -775,8 +775,7 @@ public:
 
     // If, post-reload, we still can't use the right number of channels, let's
     // conclude the plugin doesn't allow this channel count.
-    if ((!mainInputBus || mainInputBus->getNumberOfChannels() != numChannels ||
-         mainInputBus->getNumberOfChannels() != 0) ||
+    if ((!mainInputBus || mainInputBus->getNumberOfChannels() != numChannels) ||
         mainOutputBus->getNumberOfChannels() != numChannels) {
       // Reset the bus configuration to what it was before, so we don't
       // leave one of the buses smaller than the other:
@@ -1179,7 +1178,8 @@ public:
       spec.numChannels = (juce::uint32)numChannels;
       prepare(spec);
 
-      // Use acceptsAudioInput function to check if effect or instrument. Can be overriden to avoid this exception.
+      // Use acceptsAudioInput function to check if effect or instrument. Can be
+      // overriden to avoid this exception.
       if (acceptsAudioInput()) {
         throw std::invalid_argument(
             "Plugin '" + pluginInstance->getName().toStdString() +
